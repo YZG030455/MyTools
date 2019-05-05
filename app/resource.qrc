@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/styleSheet">
+        <file>resource/styleSheet/Black.qss</file>
+        <file>resource/styleSheet/BlackBig.qss</file>
+        <file>resource/styleSheet/StyleSheet.qss</file>
+        <file>resource/styleSheet/Technology.qss</file>
+        <file>resource/styleSheet/TechnologyBig.qss</file>
+        <file>resource/styleSheet/White.qss</file>
+        <file>resource/styleSheet/WhiteBig.qss</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>resource/images/copy.png</file>
+        <file>resource/images/cut.png</file>
+        <file>resource/images/new.png</file>
+        <file>resource/images/open.png</file>
+        <file>resource/images/paste.png</file>
+        <file>resource/images/save.png</file>
+    </qresource>
+</RCC>
