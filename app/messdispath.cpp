@@ -26,6 +26,24 @@ void MessDispath::setLogInfo(QString str)
     emit signalLogInfo(str);
 }
 
+/**
+ * @brief 向网络接口发送数据
+ * @param buff
+ */
+void MessDispath::setSendTonetWork(QByteArray buff)
+{
+    emit signalSendTonetWork(buff);
+}
+
+/**
+ * @brief 接收网络Socket数据信息
+ * @param buff
+ */
+void MessDispath::setReceiveNetWork(QByteArray buff)
+{
+    emit signalReceiveNetWork(buff);
+}
+
 MessDispath::MessDispath(QObject *parent)
     : QObject(parent)
 {

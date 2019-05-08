@@ -1,6 +1,14 @@
-#该.pri文件用于写入与解析.ini、 .xml文件
+#文件的
 INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
+
+HEADERS += \
+    $$PWD/programfilepath.h \
+    $$PWD/globalconfigfile.h
+
+SOURCES += \
+    $$PWD/programfilepath.cpp \
+    $$PWD/globalconfigfile.cpp
 
 
 

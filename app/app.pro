@@ -38,13 +38,16 @@ HEADERS  +=\
 FORMS    += \
         widgets/mainwindow.ui
 
+
+include($$PWD/network/network.pri)              #网络模块
 include($$PWD/file/file.pri)
 include($$PWD/table/table.pri)
 include($$PWD/graph/graph.pri)
-include($$PWD/webKit/wibKit.pri)
+#include($$PWD/webKit/wibKit.pri)
 include($$PWD/video/video.pri)
 include($$PWD/music/music.pri)
-include($$PWD/network/network.pri)
+include($$PWD/common/common.pri)
+include($$PWD/topologicalGraph/topologicalGraph.pri)    # 拓扑图
 
 RESOURCES += \
     resource.qrc

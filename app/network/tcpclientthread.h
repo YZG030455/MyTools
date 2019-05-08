@@ -23,8 +23,18 @@ public:
 
     void initTcpClient();
 
+    void setStart();
+    void setStop();
+
+
+private slots:
+    void slotSendToNetWork(QByteArray buff);
+
 protected:
     void run();
+
+private:
+    QString getLocalIp();
 
 private:
     QTcpSocket *m_tcpClient;

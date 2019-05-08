@@ -1,5 +1,5 @@
 /*!
- *  @brief     单例模式： 用于管理发送与节水
+ *  @brief     单例模式： 用于管理发送与接受
  *  @details
  *  @author
  *  @version
@@ -20,9 +20,13 @@ public:
     static MessDispath *instance();
 
     void setLogInfo(QString str);
+    void setSendTonetWork(QByteArray buff);
+    void setReceiveNetWork(QByteArray buff);
 
 signals:
     void signalLogInfo(QString strLog);
+    void signalSendTonetWork(QByteArray buff);
+    void signalReceiveNetWork(QByteArray buff);
 
 public slots:
 

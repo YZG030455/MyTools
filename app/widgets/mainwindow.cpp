@@ -15,6 +15,7 @@
 #include "graph/graphmdisubwindow.h"
 #include "table/tablemdisubwindow.h"
 #include "music/musicmdisubwindow.h"
+#include "topologicalGraph/topographwidget.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -35,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->createDockWidget();
     this->createMdiArea();
 
-    locadStyleSheet();
+//    locadStyleSheet();
     /*!< 刷新时间 */
     QTimer *t_time = new QTimer(this);
     t_time->start(1000);
@@ -172,6 +173,11 @@ void MainWindow::createMdiArea()
     TableMdiSubWindow * tableMdiSubWindow = new TableMdiSubWindow();
     mdiArea->addSubWindow(tableMdiSubWindow);
 
+    /*! <拓扑图窗口> */
+    TopoGraphWidget * t_TopoGraphWidget = new TopoGraphWidget();
+    mdiArea->addSubWindow(t_TopoGraphWidget);
+
+    /*! <设置窗口属性> */
     mdiArea->setActiveSubWindow(tableMdiSubWindow);      //激活图表子窗口
     mdiArea->setViewMode(QMdiArea::TabbedView);                    //添加"表格"
     mdiArea->setTabsClosable(false);                               //默认否，设为true时，tab上方形成一个关闭小按钮
