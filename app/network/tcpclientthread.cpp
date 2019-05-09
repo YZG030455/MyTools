@@ -1,13 +1,18 @@
 #include "tcpclientthread.h"
+#include "messdispath.h"
 
 #include <QDebug>
 #include <QTcpSocket>
+#include <QHostInfo>
+#include <QHostAddress>
 
 TcpClientThread::TcpClientThread(QObject *parent)
     : QThread(parent)
 {
-    m_tcpClient = NULL;
+    m_tcpSocket = NULL;
 
+    /*! <初始化Tcp客户端> */
+    initTcpClient();
 }
 
 TcpClientThread::~TcpClientThread()
@@ -20,8 +25,15 @@ TcpClientThread::~TcpClientThread()
  */
 void TcpClientThread::initTcpClient()
 {
-    m_tcpClient = new  QTcpSocket();
+    m_tcpSocket = new  QTcpSocket();
+    m_localIp = getLocalIp();
 
+    /*! <信号与槽> */
+    connect(MessDispath::instance(), SIGNAL(signalSendTonetWork(QByteArray)), this, SLOT(slotSendToNetWork(QByteArray)));
+    connect(m_tcpSocket, SIGNAL(connected()), this, SLOT(slotTcpSocketLink()));
+    connect(m_tcpSocket, SIGNAL(disconnected()), this, SLOT(slotTcpSocketDisLink()));
+    connect(m_tcpSocket, SIGNAL(stateChanged(QAbstractSocket::SocketState)), this, SLOT(slotTcpSocketStateChange(QAbstractSocket::SocketState)));
+    connect(m_tcpSocket, SIGNAL(readyRead()), this, SLOT(slotSocketReadyRead()));
 }
 
 /**
@@ -32,6 +44,9 @@ void TcpClientThread::setStart()
 
 }
 
+/**
+ * @brief 关闭线程
+ */
 void TcpClientThread::setStop()
 {
 
@@ -43,7 +58,80 @@ void TcpClientThread::setStop()
  */
 void TcpClientThread::slotSendToNetWork(QByteArray buff)
 {
+    m_tcpSocket->write(buff);
+}
 
+/**
+ * @brief 查看网络状态
+ * @param state
+ */
+void TcpClientThread::slotTcpSocketStateChange(QAbstractSocket::SocketState state)
+{
+    switch (state) {
+    case QAbstractSocket::UnconnectedState:
+    {
+
+        break;
+    }
+    case QAbstractSocket::HostLookupState:
+    {
+
+        break;
+    }
+    case QAbstractSocket::ConnectingState:
+    {
+
+        break;
+    }
+    case QAbstractSocket::ConnectedState:
+    {
+
+        break;
+    }
+    case QAbstractSocket::BoundState:
+    {
+
+        break;
+    }
+    case QAbstractSocket::ClosingState:
+    {
+
+        break;
+    }
+    case QAbstractSocket::ListeningState:
+    {
+
+        break;
+    }
+    default:
+        break;
+    }
+}
+
+/**
+ * @brief 连接网络
+ */
+void TcpClientThread::slotTcpSocketLink()
+{
+
+}
+
+/**
+ * @brief 断开连接
+ */
+void TcpClientThread::slotTcpSocketDisLink()
+{
+
+}
+
+/**
+ * @brief 读取接收到的网络信息
+ */
+void TcpClientThread::slotSocketReadyRead()
+{
+    while (m_tcpSocket->canReadLine()) {
+        QByteArray buff = m_tcpSocket->readLine();
+    }
 }
 
 /**
