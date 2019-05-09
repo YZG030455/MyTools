@@ -40,6 +40,7 @@ FORMS    += \
 
 
 include($$PWD/network/network.pri)              #网络模块
+
 include($$PWD/file/file.pri)
 include($$PWD/table/table.pri)
 include($$PWD/graph/graph.pri)
