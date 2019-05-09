@@ -23,6 +23,8 @@
 #include <widgets/dockwidget/filetreedockwidget.h>
 #include <widgets/dockwidget/loginfodockwidget.h>
 
+class MdiArea;
+
 namespace Ui {
 class MainWindow;
 }
@@ -70,6 +72,8 @@ private:
     QMenu *toolsMenu;
     QMenu *netWorkMenu;
     QMenu *helpMenu;
+
+    MdiArea *m_pMdiArea;
 
     /* 状态栏显示系统时间 */
     QLabel *m_timeLabel;

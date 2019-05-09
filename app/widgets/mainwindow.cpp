@@ -12,6 +12,8 @@
 #include <QDomDocument>
 #include <QFile>
 
+#include "widgets/mdiarea.h"
+
 #include "graph/graphmdisubwindow.h"
 #include "table/tablemdisubwindow.h"
 #include "music/musicmdisubwindow.h"
@@ -156,6 +158,9 @@ void MainWindow::createDockWidget()
  */
 void MainWindow::createMdiArea()
 {
+    m_pMdiArea = new MdiArea();
+
+
     QMdiArea *mdiArea = new QMdiArea();
     QMdiSubWindow *mdiSubWindow1 = new QMdiSubWindow();
     mdiSubWindow1->setWindowTitle(QStringLiteral("子窗口1"));
