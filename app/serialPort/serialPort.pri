@@ -1,0 +1,8 @@
+﻿INCLUDEPATH += $$PWD
+DEPENDPATH += $$PWD
+
+HEADERS += \
+
+
+SOURCES += \
+
